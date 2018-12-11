@@ -8,14 +8,22 @@
 
 
 namespace Ui {
+#ifdef OLED_128x64_ADAFRUIT_SCREENS_SPI
+    OLED_CLASS display(OLED_DC,OLED_RESET,OLED_CS);
+#else
     OLED_CLASS display;
+#endif
     bool shouldDrawUpdate = false;
     bool shouldDisplay = false;
     bool shouldFullRedraw = false;
 
 
     void setup() {
+#ifdef OLED_128x64_ADAFRUIT_SCREENS_SPI
+        display.begin(OLED_VCCSTATE);
+#else
         display.begin(OLED_VCCSTATE, OLED_ADDRESS);
+#endif
 
         display.setTextColor(WHITE);
         display.setTextSize(1);
@@ -23,7 +31,7 @@ namespace Ui {
 
         display.clearDisplay();
 
-        display.begin();
+        //display.begin();
     }
 
     void update() {

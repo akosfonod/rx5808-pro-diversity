@@ -39,13 +39,20 @@ SOFTWARE.
 //#define SH1106
 
 //#define TVOUT_SCREENS
-#define OLED_128x64_ADAFRUIT_SCREENS
+//#define OLED_128x64_ADAFRUIT_SCREENS
+#define OLED_128x64_ADAFRUIT_SCREENS_SPI
 
 // Enable this if your screen is upside down.
 //#define USE_FLIP_SCREEN
 
 #ifdef OLED_128x64_ADAFRUIT_SCREENS
     #define OLED_ADDRESS 0x3C // I2C address for display (0x3C or 0x3D, usually)
+#endif
+
+#ifdef OLED_128x64_ADAFRUIT_SCREENS_SPI
+    #define OLED_DC     7
+    #define OLED_CS     8
+    #define OLED_RESET  9
 #endif
 
 // === Receiver Module =========================================================
