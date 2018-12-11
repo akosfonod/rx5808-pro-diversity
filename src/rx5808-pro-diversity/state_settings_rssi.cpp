@@ -42,6 +42,13 @@ void StateMachine::SettingsRssiStateHandler::onUpdate() {
                     EepromSettings.rssiBMax = Receiver::rssiBRaw;
             #endif
         break;
+
+        case InternalState::DONE:
+        break;
+        case InternalState::WAIT_FOR_HIGH:
+        break;
+        case InternalState::WAIT_FOR_LOW:
+        break;
     }
 
     Receiver::setChannel((Receiver::activeChannel + 1) % CHANNELS_SIZE);
@@ -56,6 +63,13 @@ void StateMachine::SettingsRssiStateHandler::onUpdate() {
 
                 case InternalState::SCANNING_HIGH:
                     internalState = InternalState::DONE;
+                break;
+
+                case InternalState::DONE:
+                break;
+                case InternalState::WAIT_FOR_HIGH:
+                break;
+                case InternalState::WAIT_FOR_LOW:
                 break;
             }
 
@@ -97,6 +111,11 @@ void StateMachine::SettingsRssiStateHandler::onButtonChange(
         case InternalState::DONE:
             EepromSettings.save();
             StateMachine::switchState(StateMachine::State::MENU);
+        break;
+
+        case InternalState::SCANNING_HIGH:
+        break;
+        case InternalState::SCANNING_LOW:
         break;
     }
 

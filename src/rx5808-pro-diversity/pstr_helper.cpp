@@ -8,7 +8,7 @@ char *PSTRtoBuffer_P(PGM_P str) {
     
     for (
         uint8_t c = '\0';
-        c = pgm_read_byte(str + i) && i < sizeof(PSTR2_BUFFER); 
+        (c = pgm_read_byte(str + i) && i < sizeof(PSTR2_BUFFER)); 
         i++
     ) {
         PSTR2_BUFFER[i] = pgm_read_byte(str + i);

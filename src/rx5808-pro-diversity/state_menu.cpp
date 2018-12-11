@@ -73,6 +73,10 @@ void StateMachine::MenuStateHandler::onButtonChange(
         case Button::MODE:
             this->menu.activateItem();
             break;
+        case Button::COUNT:
+            break;
+        case Button::SAVE:
+            break;
     }
 }
 

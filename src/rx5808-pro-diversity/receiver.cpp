@@ -77,7 +77,7 @@ namespace Receiver {
         return rssiStableTimer.hasTicked();
     }
 
-    uint16_t updateRssi() {
+    void updateRssi() {
         analogRead(PIN_RSSI_A); // Fake read to let ADC settle.
         rssiARaw = analogRead(PIN_RSSI_A);
         #ifdef USE_DIVERSITY
@@ -169,6 +169,8 @@ namespace Receiver {
 
                 case DiversityMode::FORCE_B:
                     nextReceiver = ReceiverId::B;
+                    break;
+                case DiversityMode::AUTO:
                     break;
             }
         }

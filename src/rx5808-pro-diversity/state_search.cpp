@@ -52,6 +52,7 @@ static const unsigned char* menuOrderIcon(void* state) {
             return channelOrderIcon;
             break;
     }
+    return 0;
 }
 
 static void menuModeHandler(void* state) {

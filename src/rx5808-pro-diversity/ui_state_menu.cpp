@@ -60,6 +60,11 @@ bool StateMenuHelper::handleButtons(
         case Button::MODE:
             this->menuItems[this->selectedItem].handler(this->state);
             break;
+
+        case Button::SAVE:
+            break;
+        case Button::COUNT:
+            break;
     }
 
     return true;
